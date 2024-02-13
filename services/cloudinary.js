@@ -41,4 +41,4 @@ const uploadSingleImage = (req, res, next) => {
   });
 };
 
-export { uploadSingleImage, uploadMultipleImages };
+export { uploadSingleImage };
