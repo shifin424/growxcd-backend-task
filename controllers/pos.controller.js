@@ -78,10 +78,15 @@ export const addProducts = async (req, res, next) => {
 export const getProducts = async (req, res, next) => {
     try {
         const products = await Product.find({})
-        res.status(200).json(products)
+            .populate({
+                path: 'offers.offerProductId',
+                model: 'Product',
+                select: 'productName',
+            });
 
+        res.status(200).json(products);
     } catch (err) {
-        console.log(err)
-        return next(err)
+        console.log(err);
+        return next(err);
     }
-}
+};
